@@ -1,5 +1,5 @@
 {
-  "routes": [
-    { "src": "/", "dest": "/abibsaudia/t.html" }
+  "rewrites": [
+    { "source": "/abib", "destination": "/t.html" }
   ]
 }
