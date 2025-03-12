@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Saya</title>
+  <style>
+    /* Tampilan dasar: background putih dan teks hitam */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace;
+      background: #ffffff;
+      color: #000;
+    }
+    /* Kontainer utama dengan lebar tetap untuk desktop */
+    .container {
+      width: 1000px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    /* Bagian perkenalan dengan tinggi tetap dan scrollbar */
+    .intro {
+      height: 350px;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      /* Hilangkan center vertical agar sticky berfungsi dengan baik */
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+    /* Judul tetap di atas menggunakan position: sticky */
+    .intro h1 {
+      margin: 10px 0;
+      font-size: 36px;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1;
+      padding: 10px 0;
+    }
+    /* Foto profil dengan ukuran tetap */
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 10px 0;
+    }
+    /* Teks typewriter */
+    #typed-text {
+      font-size: 20px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      width: 100%;
+    }
+    /* Blinking cursor pada efek mengetik */
+    #typed-text::after {
+      content: "";
+      border-right: 2px solid #000;
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    /* Bagian keahlian */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .skill-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      flex: 1 1 250px;
+      max-width: 300px;
+      text-align: center;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .skill-box:hover {
+      transform: scale(1.05);
+    }
+    .skill-box img {
+      width: 80px;
+      height: 80px;
+    }
+    .skill-box p {
+      font-size: 22px;
+      margin-top: 10px;
+    }
+    /* Bagian kontak */
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #000;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+    }
+    .contact-item:hover {
+      background: #f0f0f0;
+    }
+    .contact-item img {
+      width: 30px;
+      height: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Bagian Perkenalan -->
+    <div class="intro">
+      <h1>Selamat Datang!</h1>
+      <img src="https://files.catbox.moe/x10ej5.jpg" alt="Foto Profil" class="profile-photo">
+      <p id="typed-text"></p>
+    </div>
+
+    <!-- Bagian Keahlian -->
+    <div class="skills">
+      <div class="skill-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript">
+        <p>JavaScript</p>
+      </div>
+      <div class="skill-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python">
+        <p>Python</p>
+      </div>
+      <div class="skill-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Anonymous_emblem.svg" alt="Anonymous Emblem">
+        <p>DDoS</p>
+      </div>
+    </div>
+
+    <!-- Bagian Kontak -->
+    <div class="contacts">
+      <a href="https://wa.me/6287847524079" target="_blank" class="contact-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span>WhatsApp</span>
+      </a>
+      <a href="https://t.me/abibsaudia" target="_blank" class="contact-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+        <span>Telegram</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Efek mengetik (typewriter) untuk teks perkenalan
+    const text = "Perkenalkan, nama saya Abib. Saya dikenal di media sosial sebagai abibsaudia. Saya merupakan pemilik SXUDIA STRESSER, grup ALL TEAM STRESSER, dan SXUDIAPROXY. Saya adalah seorang pengembang yang menguasai JavaScript, Python, dan DDoS. Selamat datang di dunia digital yang penuh tantangan.";
+    let index = 0;
+    function typeWriter() {
+      if (index < text.length) {
+        document.getElementById("typed-text").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 80);
+      }
+    }
+    window.onload = typeWriter;
+  </script>
+</body>
+</html>
